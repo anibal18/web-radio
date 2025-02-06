@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Audio</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container-fluid container-elements">
+        <img src="./assets/portada.png" class="img-fluid" alt="">
+        <div class="container-sound ">
+            <div class="container-reproductive">
+                <p class="helper">Disfruta de nuestra programación AQUÍ.</p>
+                <div class="container-en-vivo">
+                    <button class="circle-button"></button>
+                    <p class="en-vivo">EN VIVO</p>
+                </div>
+                <div class="audio-player">
+                    <audio id="audio" src="https://audio.besser975fm.com/"></audio>
+                    <div class="controls">
+                        <div class="container-play-range">
+                            <div class="container-play">
+                                <button id="play-pause" class="play">
+                                    <i class="fa-solid fa-play icon-play"></i>
+                                </button>
+                            </div>
+                            <input type="range"  min="0" max="0" step="0.1" value="0" disabled>
+                        </div>
+
+
+                        <div class="container-range">
+                            <i id="speaker" class="fa-solid fa-volume-high icon-speaker"></i>
+                            <input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="background-color: aqua;">
+            <div class="row">
+                <div class="col-lg-3 col-6 container-images" style="background-color: brown;">
+                    <img src="./assets/consola.jpg"   alt="">
+                </div>
+                <div class="col-lg-3 col-6 container-images">
+                    <img src="./assets/microphone.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-6  container-images" >
+                    <img src="./assets/setup-radio.jpg" alt="">
+                </div>
+                <div class="col-lg-3 col-6  container-images" >
+                    <img src="./assets/pc-radio.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="container-slogan">
+            <img src="./assets//logo-slogan.png" alt="">
+            <p class="slogan">AQUÍ HAY <span class="word-good">BUENA</span> MÚSICA</p>
+        </div>
+        <div class=" container-fluid ">
+            <div class="row">
+                <div class=" col-md-6 col-12 sub-container-contactanos-footer">
+                    <h3 class="title-contactanos span-info-footer">CONTACTANOS</h3>
+                    <div class="info-contactanos">
+                        <i class="fa-solid fa-phone icon-contactanos"></i>
+                        <p class="phone">(0412)797-5975</p>
+                    </div>
+                   <div class="info-contactanos">
+                    <i class="fa-brands fa-instagram icon-contactanos"></i>
+                    <p class="social">@besser97.5fm</p>
+                   </div >
+                    
+                    <div class="info-contactanos">
+                        <i class="fa-solid fa-video icon-contactanos"></i>
+                        <p class="social">@97.5fmbesser</p>
+                    </div>
+                    
+                </div>
+                <div class=" col-md-6 col-12 sub-container-info-footer"> 
+                    <h1 class="title info-footer">BESSER <span class="span-info-footer">97.5FM</span></h1>
+                    <p class="hashtag-mas-musica info-footer"><span class="span-info-footer">#MasMusica</span> MenosHabladera</p>
+                    <p class="copyright info-footer">Derechos Reservados @2025</p>
+                    <p class="hashtag-brutal info-footer"><span class="span-info-footer">#BRUTAL</span></p></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+ document.addEventListener("DOMContentLoaded", function () {
+    const audio = document.getElementById("audio");
+    const playPauseBtn = document.getElementById("play-pause");
+    const muteSound = document.getElementById("speaker");
+    const volumeRange = document.getElementById("volume"); // Selecciona el input range del volumen
+    const icon = playPauseBtn.querySelector("i"); // Selecciona el ícono dentro del botón
+
+    let previousVolume = audio.volume; // Almacena el volumen anterior
+
+    // Función para reproducir/pausar
+    playPauseBtn.addEventListener("click", function () {
+        if (audio.paused) {
+            audio.play().catch(error => console.log("Error al reproducir audio:", error));
+            icon.classList.remove("fa-play");
+            icon.classList.add("fa-pause");
+        } else {
+            audio.pause();
+            icon.classList.remove("fa-pause");
+            icon.classList.add("fa-play");
+        }
+    });
+
+    // Función para silenciar/restaurar volumen
+    muteSound.addEventListener("click", function () {
+        if (audio.volume > 0) {
+            previousVolume = audio.volume;
+            audio.volume = 0;
+            volumeRange.value = 0;
+            muteSound.classList.remove("fa-volume-high");
+            muteSound.classList.add("fa-volume-xmark");
+        } else {
+            audio.volume = previousVolume;
+            volumeRange.value = previousVolume;
+            muteSound.classList.remove("fa-volume-xmark");
+            muteSound.classList.add("fa-volume-high");
+        }
+    });
+
+    // Función para ajustar volumen con el input range
+    volumeRange.addEventListener("input", function () {
+        audio.volume = volumeRange.value; // Ajusta el volumen del audio
+        if (audio.volume === 0) {
+            muteSound.classList.remove("fa-volume-high");
+            muteSound.classList.add("fa-volume-xmark");
+        } else {
+            muteSound.classList.remove("fa-volume-xmark");
+            muteSound.classList.add("fa-volume-high");
+        }
+    });
+
+});
+
+    </script>
+</body>
+</html>
