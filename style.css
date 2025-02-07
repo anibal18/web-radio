@@ -369,10 +369,16 @@ input[type="range"]::-webkit-slider-thumb {
     .container-sound{
         width: 100%;
     }
+    .container-slogan{
+        height: 150px;
+    }
 
-    .image-portada{
-        width: 100%;
-        height: 200px !important;
+    .container-slogan img{
+        height: 100px;
+    }
+
+    .sub-container-info-footer{
+        margin-top: 20px !important;
     }
     .helper{
         font-size: 0.95rem;
