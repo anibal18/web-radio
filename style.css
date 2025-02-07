@@ -8,8 +8,6 @@ html  ,body{
     overflow-x: hidden;
 }
 
-
-
 .container-elements{
     display: flex;
     justify-content: center;
@@ -21,18 +19,27 @@ html  ,body{
 }
 
 .container-sound{
-    width: 80%;
-    min-width: 350px;
-    height: 200px;
-    background-color: rgb(22, 22, 22);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+    position: relative;
+    padding: 0 !important;
+    height: 550px;
 }
 
 
+.image-portada{
+    width: 100%;
+    height: 100% !important;
+}
+
+
+/* Por defecto, la imagen fuera de container-sound está oculta */
+.image-outside {
+    display: none;
+}
+
+/* Por defecto, la imagen dentro de container-sound está visible */
+.image-inside {
+    display: block;
+}
 .radio-container {
     text-align: center;
     background-color: #fff;
@@ -74,6 +81,7 @@ html  ,body{
     border: none;
     background: none;
     cursor: pointer;
+    padding: 0;
 }
 
 #volume {
@@ -83,13 +91,22 @@ html  ,body{
 
 
 .container-reproductive{
+    background-color: rgba(0, 0, 0, 0.513);
+    position: absolute;
     display: flex;
     align-items: center;
-    height: 90px;
-    width: fit-content;
+    height: 200px;
+    width: 550px !important;
+    margin-right: 20px !important;
+    margin-top: 20px !important;
+    border-radius:12px ;
     font-weight:bolder;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
+    top: 0;
+    right: 0;
+    z-index: 1;
+
 
 }
 
@@ -113,7 +130,8 @@ html  ,body{
 .helper{
     color:white;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    margin-top: 20px;
 }
 
 /* Estilos para el botón circular */
@@ -148,9 +166,23 @@ html  ,body{
     height: 40px;
     margin-right: 10px;
     border-radius:50px;
-    background-color: white;
+    background-color:white;
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.container-play i.fa-play {
+    margin-left: 5px; /* Ajusta el valor según lo que necesites */
+}
+.play{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:50px;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
 }
 .icon-play{
     color: black;
@@ -187,7 +219,7 @@ html  ,body{
 
 .container-slogan{
     background-color: white;
-    height: 150px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -195,8 +227,9 @@ html  ,body{
 }
 
 .container-slogan img{
-    width: 200px;
-    height: 90px;
+
+    width: 250px;
+    height: 120px;
 }
 
 
@@ -211,7 +244,17 @@ html  ,body{
 }
 
 
-
+.container-logo-portada{
+    position: absolute;
+    z-index: 1;
+    width: 500px;
+    height: 300px;
+    top: -60px;
+}
+.container-logo-portada img{
+    width: 100%;
+    height: 100%;
+}
 
 .sub-container-contactanos-footer  , .sub-container-info-footer{
     margin-top:10px !important;
@@ -242,7 +285,9 @@ html  ,body{
 }
 
 .title-contactanos{
+    font-size: 2.4rem;
    font-weight: bold;
+   font-family: 'Bebas Neue';
 }
 
 
@@ -253,11 +298,18 @@ html  ,body{
 
 .hashtag-mas-musica{
     font-size: 1.4rem;
+    font-family: 'Bebas Neue';
 }
 
+
+.title-info{
+    font-family: 'Bebas Neue';
+    font-size: 3rem;
+}
 .hashtag-brutal{
     font-size: 2.7rem;
     font-weight: bolder;
+    font-family: 'Bebas Neue';
 }
 
 
@@ -282,6 +334,60 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
+@media (max-width: 1700px) {
+
+
+    .helper{
+        font-size: 1.3rem;
+        margin-top: 30px;
+    }
+    .container-reproductive{
+        margin-right: 30px;
+    }
+
+}
+
+
+@media (max-width: 1400px) {
+
+    .container-reproductive{
+        position: relative;
+        width: 500px !important;
+        height: 170px;
+        margin-top: 0 !important;
+
+        margin: 0 auto !important;
+
+    }
+
+    .helper{
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+
+    .image-outside {
+        display: block; /* Muestra la imagen fuera de container-sound */
+    }
+    .image-inside {
+        display: none; /* Oculta la imagen dentro de container-sound */
+    }
+
+    .container-sound{
+        height: 200px;
+        
+    }
+
+
+.container-logo-portada{
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    height: 200px;
+    top: -60px;
+}
+  }
+
+
 @media (max-width: 650px) {
     .container-sound{
         width: 100%;
@@ -296,7 +402,9 @@ input[type="range"]::-webkit-slider-thumb {
     }
 
     .container-reproductive{
-        width: 100%;
+        width: 100% !important;
+        padding: 0 !important;
+        margin-top:20px !important ;
     }
     .controls{
         justify-content: space-around;
