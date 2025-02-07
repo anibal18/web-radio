@@ -370,6 +370,10 @@ input[type="range"]::-webkit-slider-thumb {
         width: 100%;
     }
 
+    .image-portada{
+        width: 100%;
+        height: 200px !important;
+    }
     .helper{
         font-size: 0.95rem;
     }
