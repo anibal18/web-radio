@@ -242,22 +242,6 @@ html  ,body{
     color: red;
     font-weight: bold;
 }
-
-
-.container-logo-portada{
-    position:absolute;
-    z-index: 1;
-    width: 500px;
-    height: 300px;
-    top: -50px;
-    left: -25px;
-  
-}
-.container-logo-portada img{
-    width: 100%;
-    height: 100%;
-}
-
 .sub-container-contactanos-footer  , .sub-container-info-footer{
     margin-top:10px !important;
     text-align: center;
@@ -378,15 +362,6 @@ input[type="range"]::-webkit-slider-thumb {
         height: 200px;
         
     }
-
-
-.container-logo-portada{
-    position: fixed;
-    z-index: 1;
-    width: 300px;
-    height: 200px;
-    top: -5%;
-}
   }
 
 
@@ -416,13 +391,7 @@ input[type="range"]::-webkit-slider-thumb {
         width: 100px;
     }
 
-    .container-logo-portada{
-        width: 100px;
-        height: 160px;
-        z-index: 1;
-        width: 160px;
-        top: -5%;
-    }
+
     
   }
 
